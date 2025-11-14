@@ -25,7 +25,7 @@ import Fitzone from "./assets/fitzone.png";
 import Kpdev from "./assets/portfolio.png";
 import Pharmacy from "./assets/pharmacy.png";
 import ZentrixLogo from "./assets/Company Logo/Zentrix.png";
-import LanguageLimousine from "./assets/Language Limousine.png";
+import LanguageLimousine from "./assets/language.png";
 
 // Mock project data
 const projectsData = [
