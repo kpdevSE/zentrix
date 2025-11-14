@@ -1,5 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Mail, User, Briefcase, GraduationCap } from "lucide-react";
 import Lahiru from "../assets/lahiru.jpg";
 import Pasindu from "../assets/pasindu.jpeg";
@@ -14,6 +22,45 @@ export default function TeamSection() {
       bio: "Completed Higher Diploma in Computing and Software Engineering at Cardiff Metropolitan University in UK. Currently following a BSc in Computing and Software Engineering.",
       email: "kanishkapasindu6@gmail.com",
       image: Pasindu,
+      expertise: [
+        {
+          title: "Programming Languages & Frameworks",
+          points: [
+            "HTML5, CSS3, JavaScript (ES6+), TypeScript",
+            "React.js, Next.js, Node.js, Express.js",
+            "PHP, Java",
+            "Frontend, Backend & Full-Stack Development",
+          ],
+        },
+        {
+          title: "Databases",
+          points: [
+            "MongoDB, MySQL, Firebase, Supabase",
+            "Database design & architecture",
+            "CRUD operations & data modeling",
+          ],
+        },
+        {
+          title: "Version Control",
+          points: [
+            "Git & GitHub daily workflows",
+            "Branching strategies & pull requests",
+            "Code reviews & collaboration",
+          ],
+        },
+        {
+          title: "Testing",
+          points: ["Postman for API testing & automation"],
+        },
+        {
+          title: "Deployment",
+          points: [
+            "Vercel, Netlify, GitHub Pages",
+            "Cloud deployment & CI/CD pipelines",
+            "Serverless deployments & monitoring",
+          ],
+        },
+      ],
     },
     {
       name: "Lahiru Lakshan Liyanage",
@@ -22,6 +69,45 @@ export default function TeamSection() {
       bio: "Completed Higher Diploma in Computing and Software Engineering at Cardiff Metropolitan University in UK. Currently following a BSc in Computing and Software Engineering.",
       email: "lahirufirst1@gmail.com",
       image: Lahiru,
+      expertise: [
+        {
+          title: "Programming Languages & Frameworks",
+          points: [
+            "HTML5, CSS3, JavaScript (ES6+), TypeScript",
+            "React.js, Next.js, Node.js, Express.js",
+            "PHP, Java",
+            "Frontend, Backend & Full-Stack Development",
+          ],
+        },
+        {
+          title: "Databases",
+          points: [
+            "MongoDB, MySQL, Firebase, Supabase",
+            "Database design & architecture",
+            "CRUD operations & data modeling",
+          ],
+        },
+        {
+          title: "Version Control",
+          points: [
+            "Git & GitHub daily workflows",
+            "Branching strategies & pull requests",
+            "Code reviews & collaboration",
+          ],
+        },
+        {
+          title: "Testing",
+          points: ["Postman for API testing & automation"],
+        },
+        {
+          title: "Deployment",
+          points: [
+            "Vercel, Netlify, GitHub Pages",
+            "Cloud deployment & CI/CD pipelines",
+            "Serverless deployments & monitoring",
+          ],
+        },
+      ],
     },
   ];
 
@@ -60,7 +146,7 @@ export default function TeamSection() {
                 </div>
 
                 {/* Content Section */}
-                <div className="md:w-2/3 p-6 md:p-8 flex flex-col justify-center">
+                <div className="md:w-2/3 p-6 md:p-8 flex flex-col justify-center gap-4">
                   <div className="mb-4">
                     <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
                     <div className="flex items-center gap-2 mb-3">
@@ -81,14 +167,68 @@ export default function TeamSection() {
                     {member.bio}
                   </p>
 
-                  <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <Mail size={18} className="text-black" />
-                    <a
-                      href={`mailto:${member.email}`}
-                      className="text-gray-700 hover:text-black transition-colors font-medium"
-                    >
-                      {member.email}
-                    </a>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex-1">
+                      <Mail size={18} className="text-black shrink-0" />
+                      <a
+                        href={`mailto:${member.email}`}
+                        className="text-gray-700 hover:text-black transition-colors font-medium break-all"
+                      >
+                        {member.email}
+                      </a>
+                    </div>
+
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button className="bg-black text-white hover:bg-gray-800 flex-shrink-0">
+                          View Profile
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[640px] max-h-[85vh] overflow-y-auto rounded-2xl">
+                        <DialogHeader>
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                            <div>
+                              <DialogTitle className="text-2xl">
+                                {member.name}
+                              </DialogTitle>
+                              <DialogDescription className="text-base">
+                                {member.role} · {member.position}
+                              </DialogDescription>
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              <span className="font-semibold text-black">
+                                Experience Summary
+                              </span>
+                              <p>Full-stack Delivery & Leadership</p>
+                            </div>
+                          </div>
+                        </DialogHeader>
+
+                        <div className="space-y-5">
+                          {member.expertise.map((section, sectionIndex) => (
+                            <div
+                              key={sectionIndex}
+                              className="rounded-xl border border-gray-100 bg-gray-50/60 p-4"
+                            >
+                              <h4 className="text-lg font-semibold mb-3 text-black">
+                                {section.title}
+                              </h4>
+                              <ul className="space-y-2">
+                                {section.points.map((point, pointIndex) => (
+                                  <li
+                                    key={pointIndex}
+                                    className="flex items-start gap-2 text-gray-700 leading-relaxed"
+                                  >
+                                    <span className="mt-1 h-2 w-2 rounded-full bg-black"></span>
+                                    <span>{point}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </div>
               </div>
