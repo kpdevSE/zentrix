@@ -11,6 +11,7 @@ import {
 import { Mail, User, Briefcase, GraduationCap } from "lucide-react";
 import Lahiru from "../assets/lahiru.jpg";
 import Pasindu from "../assets/pasindu.jpeg";
+import ayodya from "../assets/ayodya.jpeg";
 
 export default function TeamSection() {
   // Team Members
@@ -65,7 +66,7 @@ export default function TeamSection() {
     {
       name: "Lahiru Lakshan Liyanage",
       role: "Co-Founder",
-      position: "Frontend Developer, UI/UX Designer",
+      position: "Frontend Developer, UI/UX Designer,Backend Developer",
       bio: "Completed Higher Diploma in Computing and Software Engineering at Cardiff Metropolitan University in UK. Currently following a BSc in Computing and Software Engineering.",
       email: "lahirufirst1@gmail.com",
       image: Lahiru,
@@ -99,6 +100,42 @@ export default function TeamSection() {
           title: "Testing",
           points: ["Postman for API testing & automation"],
         },
+        {
+          title: "Deployment",
+          points: [
+            "Vercel, Netlify, GitHub Pages",
+            "Cloud deployment & CI/CD pipelines",
+            "Serverless deployments & monitoring",
+          ],
+        },
+      ],
+    },
+    {
+      name: "Ayodya Pasandul Bandara",
+      role: "Frontend Developer",
+      position: "Frontend Developer, UI/UX Designer",
+      bio: "Completed Higher Diploma in Computing and Software Engineering at Cardiff Metropolitan University in UK. Currently following a BSc in Computing and Software Engineering.",
+      email: "lahirufirst1@gmail.com",
+      image: Lahiru,
+      expertise: [
+        {
+          title: "Programming Languages & Frameworks",
+          points: [
+            "HTML5, CSS3, JavaScript (ES6+), TypeScript",
+            "React.js, Next.js,",
+            "Frontend, ",
+          ],
+        },
+
+        {
+          title: "Version Control",
+          points: [
+            "Git & GitHub daily workflows",
+            "Branching strategies & pull requests",
+            "Code reviews & collaboration",
+          ],
+        },
+
         {
           title: "Deployment",
           points: [
