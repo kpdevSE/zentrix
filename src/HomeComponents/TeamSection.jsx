@@ -115,7 +115,7 @@ export default function TeamSection() {
       role: "Frontend Developer",
       position: "Frontend Developer, UI/UX Designer",
       bio: "Completed Higher Diploma in Computing and Software Engineering at Cardiff Metropolitan University in UK. Currently following a BSc in Computing and Software Engineering.",
-      email: "lahirufirst1@gmail.com",
+      email: "ayodyapasandul123@gmail.com",
       image: ayodya,
       expertise: [
         {
