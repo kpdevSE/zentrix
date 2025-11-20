@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -158,133 +157,123 @@ export default function TeamSection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 mb-16">
         {teamMembers.map((member, index) => (
-          <Card
-            key={index}
-            className="overflow-hidden hover:shadow-xl transition-shadow duration-300 border-2 hover:border-black"
+          <article
+            key={member.email}
+            className="group relative rounded-[32px] border border-gray-100 bg-white/90 p-8 shadow-xl transition hover:-translate-y-1 hover:shadow-2xl"
           >
-            <CardContent className="p-0">
-              <div className="flex flex-col md:flex-row">
-                {/* Image Section */}
-                <div className="md:w-1/3 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-6 md:p-8">
-                  <div className="relative">
-                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 bg-black text-white rounded-full p-2 shadow-lg">
-                      <User size={20} />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content Section */}
-                <div className="md:w-2/3 p-6 md:p-8 flex flex-col justify-center gap-4">
-                  <div className="mb-4">
-                    <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Briefcase size={16} className="text-gray-500" />
-                      <span className="text-lg font-semibold text-black">
-                        {member.role}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 mb-4">
-                      <GraduationCap size={16} className="text-gray-500" />
-                      <span className="text-gray-700 font-medium">
-                        {member.position}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    {member.bio}
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors flex-1">
-                      <Mail size={18} className="text-black shrink-0" />
-                      <a
-                        href={`mailto:${member.email}`}
-                        className="text-gray-700 hover:text-black transition-colors font-medium break-all"
-                      >
-                        {member.email}
-                      </a>
-                    </div>
-
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button className="bg-black text-white hover:bg-gray-800 flex-shrink-0">
-                          View Profile
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent className="sm:max-w-[640px] max-h-[85vh] overflow-y-auto rounded-2xl">
-                        <DialogHeader>
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                            <div>
-                              <DialogTitle className="text-2xl">
-                                {member.name}
-                              </DialogTitle>
-                              <DialogDescription className="text-base">
-                                {member.role} · {member.position}
-                              </DialogDescription>
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              <span className="font-semibold text-black">
-                                Experience Summary
-                              </span>
-                              <p>Full-stack Delivery & Leadership</p>
-                            </div>
-                          </div>
-                        </DialogHeader>
-
-                        <div className="space-y-5">
-                          {member.expertise.map((section, sectionIndex) => (
-                            <div
-                              key={sectionIndex}
-                              className="rounded-xl border border-gray-100 bg-gray-50/60 p-4"
-                            >
-                              <h4 className="text-lg font-semibold mb-3 text-black">
-                                {section.title}
-                              </h4>
-                              <ul className="space-y-2">
-                                {section.points.map((point, pointIndex) => (
-                                  <li
-                                    key={pointIndex}
-                                    className="flex items-start gap-2 text-gray-700 leading-relaxed"
-                                  >
-                                    <span className="mt-1 h-2 w-2 rounded-full bg-black"></span>
-                                    <span>{point}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
+            <div className="flex flex-col gap-6 md:flex-row">
+              <div className="md:w-1/3">
+                <div className="relative rounded-3xl bg-gray-50 p-6">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="h-48 w-full rounded-2xl object-cover shadow-lg"
+                  />
+                  <span className="absolute -bottom-4 left-1/2 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white shadow-lg">
+                    <User size={16} />
+                    Lead
+                  </span>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+              <div className="md:w-2/3 space-y-4">
+                <div>
+                  <p className="text-sm font-semibold text-gray-400">Partner</p>
+                  <h3 className="text-2xl font-semibold text-gray-900">
+                    {member.name}
+                  </h3>
+                </div>
+                <div className="space-y-2 text-gray-700">
+                  <div className="flex items-center gap-2 text-base font-semibold text-gray-900">
+                    <Briefcase size={16} className="text-gray-500" />
+                    {member.role}
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <GraduationCap size={16} className="text-gray-500" />
+                    {member.position}
+                  </div>
+                </div>
+                <p className="text-gray-600">{member.bio}</p>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href={`mailto:${member.email}`}
+                    className="inline-flex items-center gap-2 rounded-full bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                  >
+                    <Mail size={16} />
+                    {member.email}
+                  </a>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="rounded-full bg-black px-5 py-2 text-sm font-semibold text-white hover:bg-gray-900">
+                        View profile
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[720px] max-h-[85vh] overflow-y-auto rounded-2xl">
+                      <DialogHeader>
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                          <div>
+                            <DialogTitle className="text-3xl font-semibold text-gray-900">
+                              {member.name}
+                            </DialogTitle>
+                            <DialogDescription className="text-base text-gray-600">
+                              {member.role} · {member.position}
+                            </DialogDescription>
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            <p className="font-semibold text-gray-900">
+                              Focus areas
+                            </p>
+                            Full-stack delivery & leadership
+                          </div>
+                        </div>
+                      </DialogHeader>
+
+                      <div className="space-y-6">
+                        {member.expertise.map((section, sectionIndex) => (
+                          <div
+                            key={sectionIndex}
+                            className="rounded-2xl border border-gray-100 bg-gray-50/80 p-5"
+                          >
+                            <h4 className="text-lg font-semibold text-gray-900">
+                              {section.title}
+                            </h4>
+                            <ul className="mt-3 space-y-2 text-gray-700">
+                              {section.points.map((point, pointIndex) => (
+                                <li
+                                  key={pointIndex}
+                                  className="flex items-start gap-2 text-sm leading-relaxed"
+                                >
+                                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-black" />
+                                  <span>{point}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </div>
+            </div>
+          </article>
         ))}
       </div>
 
-      {/* Join Our Team Section */}
-      <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 md:p-12 rounded-2xl text-center border-2 border-gray-200">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4">Join Our Team</h2>
-          <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-            We're always looking for talented individuals to join our growing
-            team. If you're passionate about technology and innovation, we'd
-            love to hear from you.
+      <div className="rounded-[32px] border border-gray-200 bg-gradient-to-br from-gray-50 via-white to-gray-100 p-10 text-center shadow-xl">
+        <div className="mx-auto max-w-3xl space-y-4">
+          <p className="text-sm font-semibold text-gray-500">Careers soon</p>
+          <h2 className="text-3xl font-bold text-gray-900">
+            We&apos;re assembling the next wave of product talent.
+          </h2>
+          <p className="text-lg text-gray-600">
+            If you love owning craft, collaborating with founders, and shipping
+            meaningful work, drop us a note. We open new roles in product,
+            design, and engineering every quarter.
           </p>
-          <Button className="bg-black text-white hover:bg-gray-800 px-8 py-6 text-lg">
-            Coming Soon
+          <Button className="rounded-full bg-black px-8 py-6 text-base font-semibold text-white hover:bg-gray-900">
+            Notify me when roles open
           </Button>
         </div>
       </div>

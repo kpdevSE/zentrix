@@ -1,11 +1,3 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import wtsapp from "../assets/WhatsAppButtonGreenMedium.png";
 
@@ -26,7 +18,7 @@ export default function ServiceSection() {
     <div className="py-2">
       <h1 className="text-3xl font-bold mb-8">Our Services</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 mb-16">
         {[
           {
             title: "Software Development",
@@ -75,57 +67,86 @@ export default function ServiceSection() {
             ],
           },
         ].map((service, index) => (
-          <Card key={index} className="h-full flex flex-col">
-            <CardHeader>
-              <CardTitle>{service.title}</CardTitle>
-              <CardDescription className="mt-2">
-                {service.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex-1">
-              <h4 className="font-medium mb-2">What we offer:</h4>
-              <ul className="space-y-2">
-                {service.features.map((feature, i) => (
-                  <li key={i} className="flex items-center">
-                    <ChevronRight size={16} className="mr-2 text-black" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-            <CardFooter>
+          <article
+            key={service.title}
+            className="flex h-full flex-col justify-between rounded-[28px] border border-gray-100 bg-white/90 p-6 shadow-lg transition hover:-translate-y-0.5 hover:shadow-2xl"
+          >
+            <div className="space-y-4">
+              <div className="flex items-center justify-between text-sm text-gray-400">
+                <span>0{index + 1}</span>
+                <span className="text-emerald-500 font-semibold">Core pod</span>
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900">
+                {service.title}
+              </h3>
+              <p className="text-gray-600">{service.description}</p>
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-gray-400">
+                  Scope highlights
+                </p>
+                <ul className="mt-3 space-y-2">
+                  {service.features.map((feature, i) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2 text-sm text-gray-700"
+                    >
+                      <ChevronRight size={16} className="text-black" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="pt-6">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button className="w-full">Learn More</Button>
+                  <Button className="w-full rounded-full bg-black text-white hover:bg-gray-900">
+                    Learn more
+                  </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px] rounded-2xl">
                   <DialogHeader>
                     <DialogTitle>Learn More About packages</DialogTitle>
                     <DialogDescription>
-                      Contact us using WhatsApp to know about full details of
-                      packages
+                      Contact us on WhatsApp to explore scope, timelines, and
+                      investment for this service.
                     </DialogDescription>
                   </DialogHeader>
                   <div className="grid gap-4 py-4">
-                    <a href="https://wa.me/+94715644565" target="_blank">
-                      {" "}
+                    <a
+                      href="https://wa.me/+94715644565"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <img
                         src={wtsapp}
-                        alt="wts app"
-                        className="mt-2 lg:w-[75%] mx-auto h-auto md:w-[75%] w-[1005]"
+                        alt="WhatsApp contact"
+                        className="mx-auto h-auto w-2/3"
                       />
                     </a>
                   </div>
                 </DialogContent>
               </Dialog>
-            </CardFooter>
-          </Card>
+            </div>
+          </article>
         ))}
       </div>
 
-      <div className="bg-gray-50 p-8 rounded-lg">
-        <h2 className="text-2xl font-semibold mb-4">Our Development Process</h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="rounded-[32px] border border-gray-100 bg-white/90 p-10 shadow-xl">
+        <div className="flex flex-wrap items-baseline justify-between gap-4">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-gray-400">
+              Delivery rhythm
+            </p>
+            <h2 className="text-3xl font-bold text-gray-900">
+              Our build cadence in four focused loops.
+            </h2>
+          </div>
+          <Button className="rounded-full bg-black px-6 py-4 text-sm font-semibold text-white hover:bg-gray-900">
+            Download process deck
+          </Button>
+        </div>
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-4">
           {[
             {
               step: "1",
@@ -151,16 +172,20 @@ export default function ServiceSection() {
               description:
                 "We deploy your solution and provide ongoing maintenance and support.",
             },
-          ].map((process, index) => (
+          ].map((process) => (
             <div
-              key={index}
-              className="flex flex-col items-center text-center p-4"
+              key={process.step}
+              className="rounded-3xl border border-gray-100 bg-gray-50/80 p-5 text-left"
             >
-              <div className="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center font-bold mb-4">
-                {process.step}
-              </div>
-              <h3 className="font-semibold mb-2">{process.title}</h3>
-              <p className="text-gray-600 text-sm">{process.description}</p>
+              <span className="text-sm font-semibold text-gray-400">
+                Phase {process.step}
+              </span>
+              <h3 className="mt-2 text-xl font-semibold text-gray-900">
+                {process.title}
+              </h3>
+              <p className="mt-2 text-sm text-gray-600">
+                {process.description}
+              </p>
             </div>
           ))}
         </div>
