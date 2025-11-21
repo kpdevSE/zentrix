@@ -24,7 +24,7 @@ import Hms from "./assets/hms-front.png";
 import Fitzone from "./assets/fitzone.png";
 import Kpdev from "./assets/portfolio.png";
 import Pharmacy from "./assets/pharmacy.png";
-import ZentrixLogo from "./assets/Company Logo/Zentrix.png";
+import ZentrixLogo from "./assets/Company Logo/whitelogo.png";
 import LanguageLimousine from "./assets/language.png";
 
 // Mock project data
@@ -444,12 +444,12 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#030712] text-white overflow-x-hidden">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 overflow-x-hidden">
-        <div className="container mx-auto px-4 py-4">
+      <header className="sticky top-0 z-30 border-b border-white/10 bg-black/40 backdrop-blur-xl overflow-x-hidden">
+        <div className="container mx-auto px-4 py-4 text-white">
           <div className="flex justify-between items-center gap-2 md:gap-4 w-full max-w-full">
-            <div className="font-bold text-2xl text-black flex-shrink-0 max-w-[120px] md:max-w-[150px] lg:max-w-[180px]">
+            <div className="font-bold text-2xl flex-shrink-0 max-w-[120px] md:max-w-[150px] lg:max-w-[180px]">
               <img
                 src={ZentrixLogo}
                 alt="Zentrix Logo"
@@ -465,10 +465,10 @@ const App = () => {
                   <button
                     key={section}
                     onClick={() => setActiveSection(section)}
-                    className={`cursor-pointer capitalize whitespace-nowrap text-xs md:text-sm lg:text-base ${
+                    className={`cursor-pointer capitalize whitespace-nowrap text-xs md:text-sm lg:text-base transition-colors ${
                       activeSection === section
-                        ? "text-black font-semibold"
-                        : "text-gray-600 hover:text-black"
+                        ? "text-white font-semibold"
+                        : "text-white/60 hover:text-white"
                     }`}
                   >
                     {section}
@@ -479,16 +479,16 @@ const App = () => {
 
             {/* Mobile Navigation Toggle */}
             <button
-              className="md:hidden"
+              className="md:hidden text-white"
               onClick={() => setIsNavOpen(!isNavOpen)}
             >
-              <Menu size={24} />
+              {isNavOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
           {/* Mobile Navigation Menu */}
           {isNavOpen && (
-            <div className="md:hidden mt-4 py-4 border-t border-gray-200">
+            <div className="md:hidden mt-4 py-4 border-t border-white/10 text-white">
               <nav className="flex flex-col space-y-4">
                 {[
                   "home",
@@ -504,10 +504,10 @@ const App = () => {
                       setActiveSection(section);
                       setIsNavOpen(false);
                     }}
-                    className={`capitalize cursor-pointer ${
+                    className={`capitalize cursor-pointer transition-colors ${
                       activeSection === section
-                        ? "text-black font-semibold"
-                        : "text-gray-600"
+                        ? "text-white font-semibold"
+                        : "text-white/70"
                     }`}
                   >
                     {section}
@@ -520,7 +520,7 @@ const App = () => {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">{renderSection()}</main>
+      <main className="container mx-auto">{renderSection()}</main>
 
       {/* Footer */}
       <footer className="bg-black text-white py-12">
